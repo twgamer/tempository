@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+AUTOMATED COPYRIGHT DETECTOR
+Texture belongs to "https://ko-fi.com/sirlalapyon";
+Texture found from "https://steamcommunity.com/workshop/filedetails/2553700067";
+-->
+
+<Defs>
+
+<ThingDef ParentName="PlantBase">
+
+<defName>Plant_SteakWheat</defName>
+<description>A legacy product from Food Crisis era, this bio-engineered plant offers sustainable meat alternative.</description>
+<label>steakwheat</label>
+
+<graphicData>
+<graphicClass>Graphic_Random</graphicClass>
+<texPath>plantkind_steakwheat</texPath>
+</graphicData>
+
+<ingestible>
+<foodType>Plant</foodType>
+<preferability>RawBad</preferability>
+<tasteThought>AteRawFood</tasteThought>
+</ingestible>
+
+<selectable>true</selectable>
+<statBases><Nutrition>1.0</Nutrition></statBases>
+
+<plant>
+<dieIfLeafless>true</dieIfLeafless>
+<fertilityMin>1.4</fertilityMin>
+<fertilitySensitivity>2.0</fertilitySensitivity>
+<growDays>10.0</growDays>
+<harvestedThingDef>Meat_Chicken</harvestedThingDef>
+<harvestTag>Standard</harvestTag>
+<harvestYield>10</harvestYield>
+<humanFoodPlant>true</humanFoodPlant>
+<immatureGraphicPath>plantkind_steakwheat_premature</immatureGraphicPath>
+<maxMeshCount>4</maxMeshCount>
+<mustBeWildToSow>false</mustBeWildToSow>
+<purpose>Food</purpose>
+<sowMinSkill>10</sowMinSkill>
+<sowResearchPrerequisites/>
+<sowTags><li>Ground</li><li>Hydroponic</li></sowTags>
+<topWindExposure>0.1</topWindExposure>
+<visualSizeRange>0.5~0.9</visualSizeRange>
+</plant>
+
+</ThingDef>
+
+</Defs>

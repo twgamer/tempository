@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- SOURCE CODE VIEWER @ https://github.com/icsharpcode/ILSpy (Press CTRL and E for search) -->
+<!-- STEAMCMD NAVIGATOR @ login anonymous → workshop_download_item 294100 ****** -->
+<!-- XML XPATH SYNTAXES @ https://www.w3schools.com/xml/xpath_syntax.asp -->
+
+<Patch>
+
+<!--[Unplayable] Invisible Factions at World Map-->
+<Operation Class="PatchOperationFindMod"><mods><li>Grimworld 40,000 - Angels of Death</li></mods>
+	<match Class="PatchOperationReplace"><xpath>*/FactionDef[defName="GW_SM_AdeptusAstartes"]/factionIconPath</xpath>
+		<value>
+			<factionIconPath>UI\Icons\AngelsofDeathModIcon</factionIconPath>
+		</value>
+	</match>
+</Operation>
+
+</Patch>

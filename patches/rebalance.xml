@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- SOURCE CODE VIEWER @ https://github.com/icsharpcode/ILSpy (Press CTRL and E for search) -->
+<!-- STEAMCMD NAVIGATOR @ login anonymous → workshop_download_item 294100 ****** -->
+<!-- XML XPATH SYNTAXES @ https://www.w3schools.com/xml/xpath_syntax.asp -->
+
+<Patch>
+
+<!--Begone Maluses-->
+<Operation Class="PatchOperationAdd"><xpath>*/PreceptDef[defName="Pain_Idealized"]</xpath><value><statOffsets><PainShockThreshold>1</PainShockThreshold></statOffsets></value></Operation>
+<Operation Class="PatchOperationRemove"><xpath>*/PreceptDef[defName="Raiding_Required"]/statOffsets</xpath></Operation>
+<Operation Class="PatchOperationRemove"><xpath>*/PreceptDef[defName="Raiding_Respected"]/statOffsets</xpath></Operation>
+<Operation Class="PatchOperationRemove"><xpath>*/PreceptDef[defName="Ranching_Central"]/comps/li[@Class="PreceptComp_SelfTookMemoryThought"]</xpath></Operation>
+<Operation Class="PatchOperationRemove"><xpath>*/PreceptDef[defName="Ranching_Central"]/statFactors/PlantWorkSpeed</xpath></Operation>
+
+<!--Begone Oversized Eyes-->
+<Operation Class="PatchOperationRemove"><xpath>*/GeneDef[defName="Eyes_Gray"]/renderNodeProperties/li[@Class="PawnRenderNodeProperties_Eye"]/texPathFemale</xpath></Operation>
+<Operation Class="PatchOperationRemove"><xpath>*/GeneDef[defName="Eyes_Red"]/renderNodeProperties/li[@Class="PawnRenderNodeProperties_Eye"]/texPathFemale</xpath></Operation>
+<Operation Class="PatchOperationRemove"><xpath>*/HediffDef[defName="VoidTouched"]/renderNodeProperties/li[@Class="PawnRenderNodeProperties_Eye" and anchorTag="LeftEye"]/texPathFemale</xpath></Operation>
+<Operation Class="PatchOperationRemove"><xpath>*/HediffDef[defName="VoidTouched"]/renderNodeProperties/li[@Class="PawnRenderNodeProperties_Eye" and anchorTag="RightEye"]/texPathFemale</xpath></Operation>
+
+<!--Bigger Rivers-->
+<Operation Class="PatchOperationReplace"><xpath>*/RiverDef[defName="Creek"]/widthOnMap</xpath><value><widthOnMap>400</widthOnMap></value></Operation>
+<Operation Class="PatchOperationReplace"><xpath>*/RiverDef[defName="HugeRiver"]/widthOnMap</xpath><value><widthOnMap>400</widthOnMap></value></Operation>
+<Operation Class="PatchOperationReplace"><xpath>*/RiverDef[defName="LargeRiver"]/widthOnMap</xpath><value><widthOnMap>400</widthOnMap></value></Operation>
+<Operation Class="PatchOperationReplace"><xpath>*/RiverDef[defName="River"]/widthOnMap</xpath><value><widthOnMap>400</widthOnMap></value></Operation>
+
+<!--Boomalopes and Boomrats Bleeds Chemfuel-->
+<Operation Class="PatchOperationAdd"><xpath>*/ThingDef[defName="Boomalope"]/race</xpath><value><bloodDef>Filth_Fuel</bloodDef></value></Operation>
+<Operation Class="PatchOperationAdd"><xpath>*/ThingDef[defName="Boomrat"]/race</xpath><value><bloodDef>Filth_Fuel</bloodDef></value></Operation>
+
+<!--Daily Quests-->
+<Operation Class="PatchOperationReplace"><xpath>*/StorytellerDef/comps/li[@Class="StorytellerCompProperties_RandomQuest"]/minSpacingDays</xpath><value><minSpacingDays>0.1</minSpacingDays></value></Operation>
+<Operation Class="PatchOperationReplace"><xpath>*/StorytellerDef/comps/li[@Class="StorytellerCompProperties_RandomQuest"]/numIncidentsRange</xpath><value><numIncidentsRange>1</numIncidentsRange></value></Operation>
+<Operation Class="PatchOperationReplace"><xpath>*/StorytellerDef/comps/li[@Class="StorytellerCompProperties_RandomQuest"]/onDays</xpath><value><onDays>1</onDays></value></Operation>
+
+<!--Decreased Food Poisoning-->
+<Operation Class="PatchOperationReplace"><xpath>*/ThingDef[ingestible/babiesCanIngest="true"]/statBases/FoodPoisonChanceFixedHuman</xpath><value><FoodPoisonChanceFixedHuman>0</FoodPoisonChanceFixedHuman></value></Operation>
+
+<!--Decreased Random Relations-->
+<Operation Class="PatchOperationReplace"><xpath>*/PawnRelationDef/generationChanceFactor</xpath><value><generationChanceFactor>0.01</generationChanceFactor></value></Operation>
+
+<!--Decreased Thunderstorms-->
+<Operation Class="PatchOperationReplace"><xpath>*/WeatherDef[defName="DryThunderstorm"]/eventMakers/li[2]/averageInterval</xpath><value><averageInterval>40000</averageInterval></value></Operation>
+<Operation Class="PatchOperationReplace"><xpath>*/WeatherDef[defName="RainyThunderstorm"]/eventMakers/li[2]/averageInterval</xpath><value><averageInterval>40000</averageInterval></value></Operation>
+
+<!--Deep Water Crossing-->
+<Operation Class="PatchOperationAdd"><xpath>*/TerrainDef[@Name="WaterDeepBase"]</xpath><value><affordances><li>Bridgeable</li></affordances></value></Operation>
+<Operation Class="PatchOperationRemove"><xpath>*/TerrainDef[@Name="WaterDeepBase"]/passability</xpath></Operation>
+<Operation Class="PatchOperationReplace"><xpath>*/TerrainDef[@Name="WaterDeepBase"]/changeable</xpath><value><changeable>true</changeable></value></Operation>
+
+<!--Enhanced Biosculpter Pod-->
+<Operation Class="PatchOperationAdd"><xpath>*/ThingDef[defName="BiosculpterPod"]/comps/li[@Class="CompProperties_BiosculpterPod_HealingCycle"]/bodyPartsToRestore</xpath><value><li>Arm</li><li>Clavicle</li><li>Femur</li><li>Foot</li><li>Hand</li><li>Heart</li><li>Humerus</li><li>Jaw</li><li>Kidney</li><li>Leg</li><li>Liver</li><li>Lung</li><li>Radius</li><li>Shoulder</li><li>Spine</li><li>Stomach</li><li>Tibia</li></value></Operation>
+<Operation Class="PatchOperationAdd"><xpath>*/ThingDef[defName="BiosculpterPod"]/comps/li[@Class="CompProperties_BiosculpterPod_HealingCycle"]/conditionsToPossiblyCure</xpath><value><li>OrganDecay</li></value></Operation>
+
+<!--Enhanced Coagulate-->
+<Operation Class="PatchOperationReplace"><xpath>*/AbilityDef[defName="Coagulate"]/verbProperties/targetParams/canTargetSelf</xpath><value><canTargetSelf>true</canTargetSelf></value></Operation>
+
+<!--Enhanced Passive Cooler-->
+<Operation Class="PatchOperationRemove"><xpath>*/ThingDef[defName="PassiveCooler"]/comps/li[@Class="CompProperties_Refuelable"]</xpath></Operation>
+<Operation Class="PatchOperationReplace"><xpath>*/ThingDef[defName="PassiveCooler"]/comps/li[@Class="CompProperties_HeatPusher"]/heatPushMinTemperature</xpath><value><heatPushMinTemperature>-5</heatPushMinTemperature></value></Operation>
+
+<!--Enhanced Pumps-->
+<Operation Class="PatchOperationReplace"><xpath>*/ThingDef[defName="MoisturePump"]/comps/li[@Class="CompProperties_TerrainPumpDry"]/daysToRadius</xpath><value><daysToRadius>1</daysToRadius></value></Operation>
+<Operation Class="PatchOperationReplace"><xpath>*/ThingDef[defName="Plant_TreePolux"]/comps/li[@Class="CompProperties_PollutionPump"]/intervalTicks</xpath><value><intervalTicks>2500</intervalTicks></value></Operation>
+<Operation Class="PatchOperationReplace"><xpath>*/ThingDef[defName="PollutionPump"]/comps/li[@Class="CompProperties_PollutionPump"]/intervalTicks</xpath><value><intervalTicks>2500</intervalTicks></value></Operation>
+
+<!--Enhanced Resurrection Serum-->
+<Operation Class="PatchOperationReplace"><xpath>*/ThingDef[defName="MechSerumResurrector"]/comps/li[@Class="CompProperties_Targetable"]/nonDessicatedCorpsesOnly</xpath><value><nonDessicatedCorpsesOnly>False</nonDessicatedCorpsesOnly></value></Operation>
+
+<!--Farmable Ambrosia-->
+<Operation Class="PatchOperationAdd"><xpath>*/ThingDef[defName="Plant_Ambrosia"]/plant</xpath><value><sowMinSkill>10</sowMinSkill><sowTags><li>Ground</li><li>Hydroponic</li></sowTags></value></Operation>
+
+<!--Herd Migration on Every Biomes-->
+<Operation Class="PatchOperationRemove"><xpath>*/IncidentDef[defName="HerdMigration"]/allowedBiomes</xpath></Operation>
+
+<!--Learning Bonuses for Butchering (Cooking), Disassembling and Stonecutting (Crafting)-->
+<Operation Class="PatchOperationAdd"><xpath>*/RecipeDef[@Name="ButcherCorpseMechanoidBase"]</xpath><value><workSkillLearnFactor>1</workSkillLearnFactor></value></Operation>
+<Operation Class="PatchOperationAdd"><xpath>*/RecipeDef[defName="ButcherCorpseFlesh"]</xpath><value><workSkillLearnFactor>1</workSkillLearnFactor></value></Operation>
+<Operation Class="PatchOperationReplace"><xpath>*/RecipeDef[@Name="MakeStoneBlocksBase"]/workSkillLearnFactor</xpath><value><workSkillLearnFactor>1</workSkillLearnFactor></value></Operation>
+
+<!--Lootable Mechanoid Weaponry-->
+<Operation Class="PatchOperationAdd"><xpath>*/ThingDef[@Name="Gun_ChargeBlasterHeavyBase"]</xpath><value><costList><ComponentSpacer>1</ComponentSpacer></costList></value></Operation>
+<Operation Class="PatchOperationAdd"><xpath>*/ThingDef[@Name="LightMechanoidGun"]</xpath><value><costList><ComponentSpacer>1</ComponentSpacer></costList></value></Operation>
+<Operation Class="PatchOperationAdd"><xpath>*/ThingDef[weaponTags/li="BeamGraserGun"]</xpath><value><costList><ComponentSpacer>1</ComponentSpacer></costList></value></Operation>
+<Operation Class="PatchOperationAdd"><xpath>*/ThingDef[weaponTags/li="HellsphereCannonGun"]</xpath><value><costList><ComponentSpacer>1</ComponentSpacer></costList></value></Operation>
+<Operation Class="PatchOperationAdd"><xpath>*/ThingDef[weaponTags/li="MechanoidGunBreach"]</xpath><value><costList><ComponentSpacer>1</ComponentSpacer></costList></value></Operation>
+<Operation Class="PatchOperationAdd"><xpath>*/ThingDef[weaponTags/li="MechanoidGunHeavy"]</xpath><value><costList><ComponentSpacer>1</ComponentSpacer></costList></value></Operation>
+<Operation Class="PatchOperationAdd"><xpath>*/ThingDef[weaponTags/li="MechanoidGunLongRange"]</xpath><value><costList><ComponentSpacer>1</ComponentSpacer></costList></value></Operation>
+<Operation Class="PatchOperationAdd"><xpath>*/ThingDef[weaponTags/li="MechanoidGunToxicNeedle"]</xpath><value><costList><ComponentSpacer>1</ComponentSpacer></costList></value></Operation>
+<Operation Class="PatchOperationRemove"><xpath>*/ThingDef[@Name="Gun_ChargeBlasterHeavyBase"]/destroyOnDrop</xpath></Operation>
+<Operation Class="PatchOperationRemove"><xpath>*/ThingDef[@Name="LightMechanoidGun"]/destroyOnDrop</xpath></Operation>
+<Operation Class="PatchOperationRemove"><xpath>*/ThingDef[weaponTags/li="BeamGraserGun"]/destroyOnDrop</xpath></Operation>
+<Operation Class="PatchOperationRemove"><xpath>*/ThingDef[weaponTags/li="HellsphereCannonGun"]/destroyOnDrop</xpath></Operation>
+<Operation Class="PatchOperationRemove"><xpath>*/ThingDef[weaponTags/li="MechanoidGunBreach"]/destroyOnDrop</xpath></Operation>
+<Operation Class="PatchOperationRemove"><xpath>*/ThingDef[weaponTags/li="MechanoidGunHeavy"]/destroyOnDrop</xpath></Operation>
+<Operation Class="PatchOperationRemove"><xpath>*/ThingDef[weaponTags/li="MechanoidGunLongRange"]/destroyOnDrop</xpath></Operation>
+<Operation Class="PatchOperationRemove"><xpath>*/ThingDef[weaponTags/li="MechanoidGunToxicNeedle"]/destroyOnDrop</xpath></Operation>
+<Operation Class="PatchOperationReplace"><xpath>*/PawnKindDef[@Name="BaseMechanoidKind"]/destroyGearOnDrop</xpath><value><destroyGearOnDrop>false</destroyGearOnDrop></value></Operation>
+
+<!--Make Things Buildable-->
+<Operation Class="PatchOperationReplace"><xpath>*/ThingDef[defName="SanguphageMeetingTorch"]/designationCategory</xpath><value><designationCategory>Furniture</designationCategory></value></Operation>
+
+<!--Make Things Moveable-->
+<Operation Class="PatchOperationAdd"><xpath>*/ThingDef[defName="AncientCryptosleepCasket"]/statBases</xpath><value><Mass>1</Mass></value></Operation>
+<Operation Class="PatchOperationAdd"><xpath>*/ThingDef[defName="AncientCryptosleepCasket"]</xpath><value><minifiedDef>MinifiedThing</minifiedDef><thingCategories><li>BuildingsMisc</li></thingCategories></value></Operation>
+<Operation Class="PatchOperationAdd"><xpath>*/ThingDef[defName="CryptosleepCasket"]/statBases</xpath><value><Mass>1</Mass></value></Operation>
+<Operation Class="PatchOperationAdd"><xpath>*/ThingDef[defName="CryptosleepCasket"]</xpath><value><minifiedDef>MinifiedThing</minifiedDef><thingCategories><li>BuildingsMisc</li></thingCategories></value></Operation>
+<Operation Class="PatchOperationAdd"><xpath>*/ThingDef[defName="SteamGeyser"]</xpath><value><minifiedDef>MinifiedThing</minifiedDef><statBases><Mass>1</Mass></statBases><thingCategories><li>BuildingsSpecial</li></thingCategories><tradeability>None</tradeability></value></Operation>
+
+<!--Minimal Radius for Anima Trees and Shrines-->
+<Operation Class="PatchOperationRemove"><xpath>*/ThingDef[defName="Plant_TreeGauranlen"]/drawPlaceWorkersWhileSelected</xpath></Operation>
+<Operation Class="PatchOperationRemove"><xpath>*/ThingDef[defName="Plant_TreeGauranlen"]/placeWorkers</xpath></Operation>
+<Operation Class="PatchOperationRemove"><xpath>*/ThingDef[defName="Plant_TreePolux"]/drawPlaceWorkersWhileSelected</xpath></Operation>
+<Operation Class="PatchOperationRemove"><xpath>*/ThingDef[defName="Plant_TreePolux"]/placeWorkers</xpath></Operation>
+<Operation Class="PatchOperationReplace"><xpath>*/StatDef[defName="MeditationPlantGrowthOffset"]/parts/li[@Class="StatPart_ArtificialBuildingsNearbyOffset"]/radius</xpath><value><radius>0.9</radius></value></Operation>
+<Operation Class="PatchOperationReplace"><xpath>*/ThingDef[defName="AnimusStone"]/comps/li[@Class="CompProperties_MeditationFocus"]/offsets/li[@Class="FocusStrengthOffset_ArtificialBuildings"]/radius</xpath><value><radius>0.9</radius></value></Operation>
+<Operation Class="PatchOperationReplace"><xpath>*/ThingDef[defName="NatureShrine_Large"]/comps/li[@Class="CompProperties_MeditationFocus"]/offsets/li[@Class="FocusStrengthOffset_ArtificialBuildings"]/radius</xpath><value><radius>0.9</radius></value></Operation>
+<Operation Class="PatchOperationReplace"><xpath>*/ThingDef[defName="NatureShrine_Small"]/comps/li[@Class="CompProperties_MeditationFocus"]/offsets/li[@Class="FocusStrengthOffset_ArtificialBuildings"]/radius</xpath><value><radius>0.9</radius></value></Operation>
+<Operation Class="PatchOperationReplace"><xpath>*/ThingDef[defName="Plant_TreeAnima"]/comps/li[@Class="CompProperties_MeditationFocus"]/offsets/li[@Class="FocusStrengthOffset_ArtificialBuildings"]/radius</xpath><value><radius>0.9</radius></value></Operation>
+<Operation Class="PatchOperationReplace"><xpath>*/ThingDef[defName="Plant_TreeGauranlen"]/comps/li[@Class="CompProperties_TreeConnection"]/connectionLossDailyPerBuildingDistanceCurve/points/li</xpath><value><li>(0, 0)</li></value></Operation>
+<Operation Class="PatchOperationReplace"><xpath>*/ThingDef[defName="Plant_TreePolux"]/comps/li[@Class="CompProperties_PollutionPump"]/disabledByArtificialBuildings</xpath><value><disabledByArtificialBuildings>false</disabledByArtificialBuildings></value></Operation>
+
+<!--Monotheistic Embodied Theist-->
+<Operation Class="PatchOperationReplace"><xpath>*/MemeDef[defName="Structure_TheistEmbodied"]/deityCount</xpath><value><deityCount>1~10</deityCount></value></Operation>
+
+<!--Raiders Never Flee-->
+<Operation Class="PatchOperationRemove"><xpath>*/FactionDef/autoFlee</xpath></Operation>
+<Operation Class="PatchOperationAdd"><xpath>*/FactionDef</xpath><value><autoFlee>false</autoFlee></value></Operation>
+
+<!--Recolored Metals-->
+<Operation Class="PatchOperationReplace"><xpath>*/TerrainDef[defName="GoldTile"]/color</xpath><value><color>(190,170,60)</color></value></Operation>
+<Operation Class="PatchOperationReplace"><xpath>*/ThingDef[defName="Gold"]/stuffProps/color</xpath><value><color>(190,170,60)</color></value></Operation>
+
+<!--Remove Disabled Works-->
+<Operation Class="PatchOperationFindMod"><mods><li>Humanoid Alien Races</li></mods><match Class="PatchOperationRemove"><xpath>*/AlienRace.AlienBackstoryDef/workDisables</xpath></match></Operation>
+<Operation Class="PatchOperationRemove"><xpath>*/BackstoryDef/workDisables</xpath></Operation>
+
+<!--Remove Doors Sound-->
+<Operation Class="PatchOperationReplace"><xpath>*/SoundDef[defName="Door_CloseManual"]/subSounds/li[*]/volumeRange</xpath><value><volumeRange>0</volumeRange></value></Operation>
+<Operation Class="PatchOperationReplace"><xpath>*/SoundDef[defName="Door_ClosePowered"]/subSounds/li[*]/volumeRange</xpath><value><volumeRange>0</volumeRange></value></Operation>
+<Operation Class="PatchOperationReplace"><xpath>*/SoundDef[defName="Door_OpenManual"]/subSounds/li[*]/volumeRange</xpath><value><volumeRange>0</volumeRange></value></Operation>
+<Operation Class="PatchOperationReplace"><xpath>*/SoundDef[defName="Door_OpenPowered"]/subSounds/li[*]/volumeRange</xpath><value><volumeRange>0</volumeRange></value></Operation>
+<Operation Class="PatchOperationReplace"><xpath>*/SoundDef[defName="SecurityDoor_BeginClosing"]/subSounds/li[*]/volumeRange</xpath><value><volumeRange>0</volumeRange></value></Operation>
+<Operation Class="PatchOperationReplace"><xpath>*/SoundDef[defName="SecurityDoor_EndClosing"]/subSounds/li[*]/volumeRange</xpath><value><volumeRange>0</volumeRange></value></Operation>
+<Operation Class="PatchOperationReplace"><xpath>*/SoundDef[defName="SecurityDoor_Open"]/subSounds/li[*]/volumeRange</xpath><value><volumeRange>0</volumeRange></value></Operation>
+
+<!--Remove Electronics Breakdown-->
+<Operation Class="PatchOperationRemove"><xpath>*/ThingDef/comps/li[@Class="CompProperties_Breakdownable"]</xpath></Operation>
+
+<!--Remove Food Packing, Look Change Desire and Social Fighting // Abandoning this method for being extremely laggy>
+<Operation Class="PatchOperationRemove"><xpath>*/InteractionDef[defName="Insult"]/socialFightBaseChance</xpath></Operation>
+<Operation Class="PatchOperationRemove"><xpath>*/InteractionDef[defName="Slight"]/socialFightBaseChance</xpath></Operation>
+<Operation Class="PatchOperationRemove"><xpath>*/ThinkTreeDef[defName="Humanlike"]/thinkRoot/subNodes/li[@Class="ThinkNode_ConditionalColonist"]/subNodes/li[@Class="ThinkNode_ConditionalNeedPercentageAbove" and need[text()="Food"]]</xpath></Operation>
+<Operation Class="PatchOperationRemove"><xpath>*/ThinkTreeDef[defName="Humanlike"]/thinkRoot/subNodes/li[@Class="ThinkNode_ConditionalColonist"]/subNodes/li[@Class="ThinkNode_ConditionalWantsLookChange"]</xpath></Operation>
+<Operation Class="PatchOperationRemove"><xpath>*/ThoughtDef[defName="LookChangeDesired"]</xpath></Operation>
+<Operation Class="PatchOperationReplace"><xpath>*/ThinkTreeDef[defName="Humanlike"]/thinkRoot/subNodes/li[@Class="ThinkNode_ConditionalColonist"]/subNodes/li[@Class="ThinkNode_ConditionalNeedPercentageAbove" and need[text()="Food"]]/threshold</xpath><value><threshold>1</threshold></value></Operation-->
+
+<!--Remove Mechanoids Wastepacks-->
+<Operation Class="PatchOperationReplace"><xpath>*/ThingDef[@Name="BaseMechanoid"]/statBases/WastepacksPerRecharge</xpath><value><WastepacksPerRecharge>0</WastepacksPerRecharge></value></Operation>
+
+<!--Remove Starting Technologies-->
+<Operation Class="PatchOperationRemove"><xpath>*/FactionDef/startingResearchTags</xpath></Operation>
+<Operation Class="PatchOperationRemove"><xpath>*/FactionDef/startingTechprintsResearchTags</xpath></Operation>
+
+<!--Replantable Anima, Gauranlen, Harbinger and Polux Trees-->
+<Operation Class="PatchOperationRemove"><xpath>*/ThingDef[defName="Plant_TreeAnima"]/minifiedDef</xpath></Operation>
+<Operation Class="PatchOperationRemove"><xpath>*/ThingDef[defName="Plant_TreeGauranlen"]/minifiedDef</xpath></Operation>
+<Operation Class="PatchOperationRemove"><xpath>*/ThingDef[defName="Plant_TreeHarbinger"]/minifiedDef</xpath></Operation>
+<Operation Class="PatchOperationRemove"><xpath>*/ThingDef[defName="Plant_TreePolux"]/minifiedDef</xpath></Operation>
+<Operation Class="PatchOperationReplace"><xpath>*/ThingDef[defName="Plant_TreeGauranlen"]/statBases/Flammability</xpath><value><Flammability>0</Flammability></value></Operation>
+<Operation Class="PatchOperationReplace"><xpath>*/ThingDef[defName="Plant_TreePolux"]/statBases/Flammability</xpath><value><Flammability>0</Flammability></value></Operation>
+
+<!--Smaller Radius for Ship Landing Beacons-->
+<Operation Class="PatchOperationReplace"><xpath>*/ThingDef[defName="ShipLandingBeacon"]/comps/li[@Class="CompProperties_ShipLandingBeacon"]/edgeLengthRange</xpath><value><edgeLengthRange>5~25</edgeLengthRange></value></Operation>
+<Operation Class="PatchOperationReplace"><xpath>*/ThingDef[defName="ShipLandingBeacon"]/displayNumbersBetweenSameDefDistRange</xpath><value><displayNumbersBetweenSameDefDistRange>5~25</displayNumbersBetweenSameDefDistRange></value></Operation>
+
+<!--Smarter Animals-->
+<Operation Class="PatchOperationRemove"><xpath>*/ThingDef/race/roamMtbDays</xpath></Operation>
+<Operation Class="PatchOperationReplace"><xpath>*/ThingDef/race[trainability="Intermediate"]/trainability</xpath><value><trainability>Advanced</trainability></value></Operation>
+<Operation Class="PatchOperationReplace"><xpath>*/ThingDef/race[trainability="None"]/trainability</xpath><value><trainability>Advanced</trainability></value></Operation>
+<Operation Class="PatchOperationReplace"><xpath>*/TrainableDef[defName="Haul"]/minBodySize</xpath><value><minBodySize>0</minBodySize></value></Operation>
+<Operation Class="PatchOperationReplace"><xpath>*/TrainableDef[defName="Rescue"]/minBodySize</xpath><value><minBodySize>0</minBodySize></value></Operation>
+
+<!--Stack Modifications-->
+<Operation Class="PatchOperationRemove"><xpath>*/ThingDef[@Name="ChunkBase"]/passability</xpath></Operation>
+<Operation Class="PatchOperationRemove"><xpath>*/ThingDef[@Name="ChunkBase"]/saveCompressible</xpath></Operation>
+<Operation Class="PatchOperationReplace"><xpath>*/ThingDef[@Name="ChunkBase"]/stackLimit</xpath><value><drawGUIOverlay>true</drawGUIOverlay><stackLimit>100000</stackLimit></value></Operation>
+<Operation Class="PatchOperationReplace"><xpath>*/ThingDef[@Name="DrugBase"]/stackLimit</xpath><value><stackLimit>100000</stackLimit></value></Operation>
+<Operation Class="PatchOperationReplace"><xpath>*/ThingDef[@Name="MealBaseIngredientless"]/stackLimit</xpath><value><stackLimit>100000</stackLimit></value></Operation>
+<Operation Class="PatchOperationReplace"><xpath>*/ThingDef[@Name="MedicineBase"]/stackLimit</xpath><value><stackLimit>100000</stackLimit></value></Operation>
+<Operation Class="PatchOperationReplace"><xpath>*/ThingDef[@Name="ResourceBase"]/stackLimit</xpath><value><stackLimit>100000</stackLimit></value></Operation>
+<Operation Class="PatchOperationReplace"><xpath>*/ThingDef[@ParentName="DrugBase"]/stackLimit</xpath><value><stackLimit>100000</stackLimit></value></Operation>
+<Operation Class="PatchOperationReplace"><xpath>*/ThingDef[@ParentName="OrganicProductBase"]/stackLimit</xpath><value><stackLimit>100000</stackLimit></value></Operation>
+<Operation Class="PatchOperationReplace"><xpath>*/ThingDef[@ParentName="ResourceBase"]/stackLimit</xpath><value><stackLimit>100000</stackLimit></value></Operation>
+<Operation Class="PatchOperationReplace"><xpath>*/ThingDef[@ParentName="ResourceVerbBase"]/stackLimit</xpath><value><stackLimit>100000</stackLimit></value></Operation>
+<Operation Class="PatchOperationReplace"><xpath>*/ThingDef[@ParentName="RoughPlantBase"]/stackLimit</xpath><value><stackLimit>100000</stackLimit></value></Operation>
+<Operation Class="PatchOperationReplace"><xpath>*/ThingDef[defName="AIPersonaCore"]/drawGUIOverlay</xpath><value><drawGUIOverlay>true</drawGUIOverlay></value></Operation>
+<Operation Class="PatchOperationReplace"><xpath>*/ThingDef[defName="BroadshieldCore"]/drawGUIOverlay</xpath><value><drawGUIOverlay>true</drawGUIOverlay></value></Operation>
+<Operation Class="PatchOperationReplace"><xpath>*/ThingDef[defName="HemogenPack"]/stackLimit</xpath><value><stackLimit>100000</stackLimit></value></Operation>
+
+<!--Stony Chairs-->
+<Operation Class="PatchOperationAdd"><xpath>*/ThingDef[defName="DiningChair"]/stuffCategories</xpath><value><li>Stony</li></value></Operation>
+
+<!--The Shattered Empire - Have Every Permits-->
+<Operation Class="PatchOperationReplace"><xpath>*/RoyalTitleDef[defName="Acolyte"]/permitPointsAwarded</xpath><value><permitPointsAwarded>1</permitPointsAwarded></value></Operation>
+<Operation Class="PatchOperationReplace"><xpath>*/RoyalTitleDef[defName="Knight"]/permitPointsAwarded</xpath><value><permitPointsAwarded>2</permitPointsAwarded></value></Operation>
+<Operation Class="PatchOperationReplace"><xpath>*/RoyalTitleDef[defName="Praetor"]/permitPointsAwarded</xpath><value><permitPointsAwarded>2</permitPointsAwarded></value></Operation>
+<Operation Class="PatchOperationReplace"><xpath>*/RoyalTitleDef[defName="Baron"]/permitPointsAwarded</xpath><value><permitPointsAwarded>3</permitPointsAwarded></value></Operation>
+<Operation Class="PatchOperationReplace"><xpath>*/RoyalTitleDef[defName="Count"]/permitPointsAwarded</xpath><value><permitPointsAwarded>4</permitPointsAwarded></value></Operation>
+<Operation Class="PatchOperationFindMod"><mods><li>Vanilla Factions Expanded - Empire</li></mods><match Class="PatchOperationReplace"><xpath>*/RoyalTitleDef[defName="VFEE_Archcount"]/permitPointsAwarded</xpath><value><permitPointsAwarded>4</permitPointsAwarded></value></match></Operation>
+<Operation Class="PatchOperationFindMod"><mods><li>Vanilla Factions Expanded - Empire</li></mods><match Class="PatchOperationReplace"><xpath>*/RoyalTitleDef[defName="VFEE_Marquess"]/permitPointsAwarded</xpath><value><permitPointsAwarded>4</permitPointsAwarded></value></match></Operation>
+<Operation Class="PatchOperationFindMod"><mods><li>Vanilla Factions Expanded - Empire</li></mods><match Class="PatchOperationReplace"><xpath>*/RoyalTitleDef[defName="VFEE_Archduke"]/permitPointsAwarded</xpath><value><permitPointsAwarded>4</permitPointsAwarded></value></match></Operation>
+<Operation Class="PatchOperationFindMod"><mods><li>Vanilla Factions Expanded - Empire</li></mods><match Class="PatchOperationReplace"><xpath>*/RoyalTitleDef[defName="VFEE_Magister"]/permitPointsAwarded</xpath><value><permitPointsAwarded>4</permitPointsAwarded></value></match></Operation>
+<Operation Class="PatchOperationFindMod"><mods><li>Vanilla Factions Expanded - Empire</li></mods><match Class="PatchOperationReplace"><xpath>*/RoyalTitleDef[defName="VFEE_Despot"]/permitPointsAwarded</xpath><value><permitPointsAwarded>5</permitPointsAwarded></value></match></Operation>
+<Operation Class="PatchOperationFindMod"><mods><li>Vanilla Factions Expanded - Empire</li></mods><match Class="PatchOperationReplace"><xpath>*/RoyalTitleDef[defName="VFEE_HighStellarch"]/permitPointsAwarded</xpath><value><permitPointsAwarded>5</permitPointsAwarded></value></match></Operation>
+
+<!--The Shattered Empire - Remove Imperial Tastes-->
+<Operation Class="PatchOperationRemove"><xpath>*/RoyalTitleDef/bedroomRequirements</xpath></Operation>
+<Operation Class="PatchOperationRemove"><xpath>*/RoyalTitleDef/disabledJoyKinds</xpath></Operation>
+<Operation Class="PatchOperationRemove"><xpath>*/RoyalTitleDef/disabledWorkTags</xpath></Operation>
+<Operation Class="PatchOperationRemove"><xpath>*/RoyalTitleDef/foodRequirement</xpath></Operation>
+<Operation Class="PatchOperationRemove"><xpath>*/RoyalTitleDef/requiredApparel</xpath></Operation>
+<Operation Class="PatchOperationRemove"><xpath>*/RoyalTitleDef/requiredMinimumApparelQuality</xpath></Operation>
+<Operation Class="PatchOperationRemove"><xpath>*/RoyalTitleDef/throneRoomRequirements</xpath></Operation>
+
+<!--The Shattered Empire - Remove Imperial Trading Limit-->
+<Operation Class="PatchOperationRemove"><xpath>*/TraderKindDef[defName="Base_Empire_Standard"]/permitRequiredForTrading</xpath></Operation>
+<Operation Class="PatchOperationRemove"><xpath>*/TraderKindDef[defName="Empire_Caravan_TraderGeneral"]/permitRequiredForTrading</xpath></Operation>
+<Operation Class="PatchOperationRemove"><xpath>*/TraderKindDef[defName="Orbital_Empire"]/permitRequiredForTrading</xpath></Operation>
+
+<!--Unburnable Metals-->
+<Operation Class="PatchOperationReplace"><xpath>*/ThingDef[defName="Gold"]/stuffProps/statFactors/Flammability</xpath><value><Flammability>0</Flammability></value></Operation>
+<Operation Class="PatchOperationReplace"><xpath>*/ThingDef[defName="Jade"]/stuffProps/statFactors/Flammability</xpath><value><Flammability>0</Flammability></value></Operation>
+<Operation Class="PatchOperationReplace"><xpath>*/ThingDef[defName="Plasteel"]/stuffProps/statFactors/Flammability</xpath><value><Flammability>0</Flammability></value></Operation>
+<Operation Class="PatchOperationReplace"><xpath>*/ThingDef[defName="Silver"]/stuffProps/statFactors/Flammability</xpath><value><Flammability>0</Flammability></value></Operation>
+<Operation Class="PatchOperationReplace"><xpath>*/ThingDef[defName="Steel"]/stuffProps/statFactors/Flammability</xpath><value><Flammability>0</Flammability></value></Operation>
+<Operation Class="PatchOperationReplace"><xpath>*/ThingDef[defName="Uranium"]/stuffProps/statFactors/Flammability</xpath><value><Flammability>0</Flammability></value></Operation>
+
+<!--Unlimited Power Supply-->
+<Operation Class="PatchOperationRemove"><xpath>*/ThingDef[@Name="Brazier"]/comps/li[@Class="CompProperties_Refuelable"]</xpath></Operation>
+<Operation Class="PatchOperationRemove"><xpath>*/ThingDef[@Name="TorchBase"]/comps/li[@Class="CompProperties_Refuelable"]</xpath></Operation>
+<Operation Class="PatchOperationRemove"><xpath>*/ThingDef[@ParentName="Brazier"]/comps/li[@Class="CompProperties_Refuelable"]</xpath></Operation>
+<Operation Class="PatchOperationRemove"><xpath>*/ThingDef[@ParentName="TorchLamp"]/comps/li[@Class="CompProperties_Refuelable"]</xpath></Operation>
+<Operation Class="PatchOperationReplace"><xpath>*/ThingDef[@ParentName="LampBase"]/comps/li[@Class="CompProperties_Power"]/basePowerConsumption</xpath><value><basePowerConsumption>-1000</basePowerConsumption></value></Operation>
+<Operation Class="PatchOperationReplace"><xpath>*/ThingDef[defName="VanometricPowerCell"]/comps/li[@Class="CompProperties_Power"]/basePowerConsumption</xpath><value><basePowerConsumption>-10000</basePowerConsumption></value></Operation>
+
+</Patch>

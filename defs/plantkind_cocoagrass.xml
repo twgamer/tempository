@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+AUTOMATED COPYRIGHT DETECTOR
+Texture belongs to "https://steamcommunity.com/profiles/76561198148177569";
+Texture found from "https://steamcommunity.com/sharedfiles/filedetails/2918327028";
+-->
+
+<Defs>
+
+<ThingDef ParentName="PlantBase">
+
+<defName>Plant_CocoaGrass</defName>
+<description>Researchers have identified a degenerative mutation in cacao trees within tropical rainforests. Bio-engineers and cultivators are now concentrating their efforts on optimizing the growth of these 'trees' in confined spaces.</description>
+<label>cocoagrass</label>
+
+<graphicData>
+<graphicClass>Graphic_Random</graphicClass>
+<texPath>plantkind_cocoagrass</texPath>
+</graphicData>
+
+<ingestible>
+<foodType>Plant</foodType>
+<preferability>RawBad</preferability>
+<tasteThought>AteRawFood</tasteThought>
+</ingestible>
+
+<selectable>true</selectable>
+<statBases><Nutrition>0.7</Nutrition></statBases>
+
+<plant>
+<dieIfLeafless>true</dieIfLeafless>
+<fertilityMin/>
+<fertilitySensitivity/>
+<growDays>10.0</growDays>
+<harvestedThingDef>Chocolate</harvestedThingDef>
+<harvestTag>Standard</harvestTag>
+<harvestYield>10</harvestYield>
+<humanFoodPlant>true</humanFoodPlant>
+<immatureGraphicPath>plantkind_cocoagrass</immatureGraphicPath>
+<maxMeshCount>9</maxMeshCount>
+<mustBeWildToSow>false</mustBeWildToSow>
+<purpose>Food</purpose>
+<sowMinSkill>10</sowMinSkill>
+<sowResearchPrerequisites/>
+<sowTags><li>Ground</li><li>Hydroponic</li></sowTags>
+<topWindExposure>0.1</topWindExposure>
+<visualSizeRange>0.3~1.0</visualSizeRange>
+</plant>
+
+</ThingDef>
+
+</Defs>
