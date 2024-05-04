@@ -16,8 +16,8 @@
 <!--Begone Oversized Eyes-->
 <Operation Class="PatchOperationRemove"><xpath>*/GeneDef[defName="Eyes_Gray"]/renderNodeProperties/li[@Class="PawnRenderNodeProperties_Eye"]/texPathFemale</xpath></Operation>
 <Operation Class="PatchOperationRemove"><xpath>*/GeneDef[defName="Eyes_Red"]/renderNodeProperties/li[@Class="PawnRenderNodeProperties_Eye"]/texPathFemale</xpath></Operation>
-<Operation Class="PatchOperationRemove"><xpath>*/HediffDef[defName="VoidTouched"]/renderNodeProperties/li[@Class="PawnRenderNodeProperties_Eye" and anchorTag="LeftEye"]/texPathFemale</xpath></Operation>
-<Operation Class="PatchOperationRemove"><xpath>*/HediffDef[defName="VoidTouched"]/renderNodeProperties/li[@Class="PawnRenderNodeProperties_Eye" and anchorTag="RightEye"]/texPathFemale</xpath></Operation>
+<Operation Class="PatchOperationRemove"><xpath>*/HediffDef[defName="VoidTouched"]/renderNodeProperties/li[@Class="PawnRenderNodeProperties_Eye"]/texPathFemale</xpath></Operation>
+<Operation Class="PatchOperationRemove"><xpath>*/TraitDef[defName="BodyMastery"]/degreeDatas/li/renderNodeProperties/li[@Class="PawnRenderNodeProperties_Eye"]/texPathFemale</xpath></Operation>
 
 <!--Bigger Rivers-->
 <Operation Class="PatchOperationReplace"><xpath>*/RiverDef[defName="Creek"]/widthOnMap</xpath><value><widthOnMap>400</widthOnMap></value></Operation>
