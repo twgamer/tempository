@@ -185,6 +185,7 @@
 <!--Stack Modifications-->
 <Operation Class="PatchOperationRemove"><xpath>*/ThingDef[@Name="ChunkBase"]/passability</xpath></Operation>
 <Operation Class="PatchOperationRemove"><xpath>*/ThingDef[@Name="ChunkBase"]/saveCompressible</xpath></Operation>
+<Operation Class="PatchOperationReplace"><xpath>*/ThingDef/drawGUIOverlay</xpath><value><drawGUIOverlay>true</drawGUIOverlay></value></Operation>
 <Operation Class="PatchOperationReplace"><xpath>*/ThingDef[@Name="ChunkBase"]/stackLimit</xpath><value><drawGUIOverlay>true</drawGUIOverlay><stackLimit>100000</stackLimit></value></Operation>
 <Operation Class="PatchOperationReplace"><xpath>*/ThingDef[@Name="DrugBase"]/stackLimit</xpath><value><stackLimit>100000</stackLimit></value></Operation>
 <Operation Class="PatchOperationReplace"><xpath>*/ThingDef[@Name="MealBaseIngredientless"]/stackLimit</xpath><value><stackLimit>100000</stackLimit></value></Operation>
@@ -195,8 +196,6 @@
 <Operation Class="PatchOperationReplace"><xpath>*/ThingDef[@ParentName="ResourceBase"]/stackLimit</xpath><value><stackLimit>100000</stackLimit></value></Operation>
 <Operation Class="PatchOperationReplace"><xpath>*/ThingDef[@ParentName="ResourceVerbBase"]/stackLimit</xpath><value><stackLimit>100000</stackLimit></value></Operation>
 <Operation Class="PatchOperationReplace"><xpath>*/ThingDef[@ParentName="RoughPlantBase"]/stackLimit</xpath><value><stackLimit>100000</stackLimit></value></Operation>
-<Operation Class="PatchOperationReplace"><xpath>*/ThingDef[defName="AIPersonaCore"]/drawGUIOverlay</xpath><value><drawGUIOverlay>true</drawGUIOverlay></value></Operation>
-<Operation Class="PatchOperationReplace"><xpath>*/ThingDef[defName="BroadshieldCore"]/drawGUIOverlay</xpath><value><drawGUIOverlay>true</drawGUIOverlay></value></Operation>
 <Operation Class="PatchOperationReplace"><xpath>*/ThingDef[defName="HemogenPack"]/stackLimit</xpath><value><stackLimit>100000</stackLimit></value></Operation>
 
 <!--Stony Chairs-->

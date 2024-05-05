@@ -10,7 +10,7 @@
 <Operation Class="PatchOperationFindMod"><mods><li>Grimworld 40,000 - Angels of Death</li></mods>
 	<match Class="PatchOperationReplace"><xpath>*/FactionDef[defName="GW_SM_AdeptusAstartes"]/factionIconPath</xpath>
 		<value>
-			<factionIconPath>UI\Icons\AngelsofDeathModIcon</factionIconPath>
+			<factionIconPath>UI/Icons/AngelsofDeathModIcon</factionIconPath>
 		</value>
 	</match>
 </Operation>

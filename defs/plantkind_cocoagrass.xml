@@ -7,7 +7,6 @@ Texture found from "https://steamcommunity.com/sharedfiles/filedetails/291832702
 -->
 
 <Defs>
-
 <ThingDef ParentName="PlantBase">
 
 <defName>Plant_CocoaGrass</defName>
@@ -30,15 +29,15 @@ Texture found from "https://steamcommunity.com/sharedfiles/filedetails/291832702
 
 <plant>
 <dieIfLeafless>true</dieIfLeafless>
-<fertilityMin/>
-<fertilitySensitivity/>
+<fertilityMin>0.5</fertilityMin>
+<fertilitySensitivity>0.5</fertilitySensitivity>
 <growDays>10.0</growDays>
 <harvestedThingDef>Chocolate</harvestedThingDef>
 <harvestTag>Standard</harvestTag>
 <harvestYield>10</harvestYield>
 <humanFoodPlant>true</humanFoodPlant>
 <immatureGraphicPath>plantkind_cocoagrass</immatureGraphicPath>
-<maxMeshCount>9</maxMeshCount>
+<maxMeshCount>1</maxMeshCount>
 <mustBeWildToSow>false</mustBeWildToSow>
 <purpose>Food</purpose>
 <sowMinSkill>10</sowMinSkill>
@@ -49,5 +48,4 @@ Texture found from "https://steamcommunity.com/sharedfiles/filedetails/291832702
 </plant>
 
 </ThingDef>
-
 </Defs>

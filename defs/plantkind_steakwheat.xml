@@ -7,7 +7,6 @@ Texture found from "https://steamcommunity.com/workshop/filedetails/2553700067";
 -->
 
 <Defs>
-
 <ThingDef ParentName="PlantBase">
 
 <defName>Plant_SteakWheat</defName>
@@ -49,5 +48,4 @@ Texture found from "https://steamcommunity.com/workshop/filedetails/2553700067";
 </plant>
 
 </ThingDef>
-
 </Defs>
