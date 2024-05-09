@@ -68,11 +68,19 @@
 <!--Enhanced Resurrection Serum-->
 <Operation Class="PatchOperationReplace"><xpath>*/ThingDef[defName="MechSerumResurrector"]/comps/li[@Class="CompProperties_Targetable"]/nonDessicatedCorpsesOnly</xpath><value><nonDessicatedCorpsesOnly>False</nonDessicatedCorpsesOnly></value></Operation>
 
+<!--Expanded Gene Bank-->
+<Operation Class="PatchOperationReplace"><xpath>*/ThingDef[defName="GeneBank"]/comps/li[@Class="CompProperties_GenepackContainer"]/maxCapacity</xpath><value><maxCapacity>8</maxCapacity></value></Operation>
+
 <!--Farmable Ambrosia-->
 <Operation Class="PatchOperationAdd"><xpath>*/ThingDef[defName="Plant_Ambrosia"]/plant</xpath><value><sowMinSkill>10</sowMinSkill><sowTags><li>Ground</li><li>Hydroponic</li></sowTags></value></Operation>
 
 <!--Herd Migration on Every Biomes-->
 <Operation Class="PatchOperationRemove"><xpath>*/IncidentDef[defName="HerdMigration"]/allowedBiomes</xpath></Operation>
+
+<!--Invincible Mechanoid Chips-->
+<Operation Class="PatchOperationAdd"><xpath>*/ThingDef[@Name="MechResourceBase"]</xpath><value><useHitPoints>false</useHitPoints></value></Operation>
+<Operation Class="PatchOperationRemove"><xpath>*/ThingDef[@Name="MechResourceBase"]/statBases/DeteriorationRate</xpath></Operation>
+<Operation Class="PatchOperationRemove"><xpath>*/ThingDef[@Name="MechResourceBase"]/statBases/Flammability</xpath></Operation>
 
 <!--Learning Bonuses for Butchering (Cooking), Disassembling and Stonecutting (Crafting)-->
 <Operation Class="PatchOperationAdd"><xpath>*/RecipeDef[@Name="ButcherCorpseMechanoidBase"]</xpath><value><workSkillLearnFactor>1</workSkillLearnFactor></value></Operation>
@@ -148,14 +156,6 @@
 <!--Remove Electronics Breakdown-->
 <Operation Class="PatchOperationRemove"><xpath>*/ThingDef/comps/li[@Class="CompProperties_Breakdownable"]</xpath></Operation>
 
-<!--Remove Food Packing, Look Change Desire and Social Fighting // Abandoning this method for being extremely laggy>
-<Operation Class="PatchOperationRemove"><xpath>*/InteractionDef[defName="Insult"]/socialFightBaseChance</xpath></Operation>
-<Operation Class="PatchOperationRemove"><xpath>*/InteractionDef[defName="Slight"]/socialFightBaseChance</xpath></Operation>
-<Operation Class="PatchOperationRemove"><xpath>*/ThinkTreeDef[defName="Humanlike"]/thinkRoot/subNodes/li[@Class="ThinkNode_ConditionalColonist"]/subNodes/li[@Class="ThinkNode_ConditionalNeedPercentageAbove" and need[text()="Food"]]</xpath></Operation>
-<Operation Class="PatchOperationRemove"><xpath>*/ThinkTreeDef[defName="Humanlike"]/thinkRoot/subNodes/li[@Class="ThinkNode_ConditionalColonist"]/subNodes/li[@Class="ThinkNode_ConditionalWantsLookChange"]</xpath></Operation>
-<Operation Class="PatchOperationRemove"><xpath>*/ThoughtDef[defName="LookChangeDesired"]</xpath></Operation>
-<Operation Class="PatchOperationReplace"><xpath>*/ThinkTreeDef[defName="Humanlike"]/thinkRoot/subNodes/li[@Class="ThinkNode_ConditionalColonist"]/subNodes/li[@Class="ThinkNode_ConditionalNeedPercentageAbove" and need[text()="Food"]]/threshold</xpath><value><threshold>1</threshold></value></Operation-->
-
 <!--Remove Mechanoids Wastepacks-->
 <Operation Class="PatchOperationReplace"><xpath>*/ThingDef[@Name="BaseMechanoid"]/statBases/WastepacksPerRecharge</xpath><value><WastepacksPerRecharge>0</WastepacksPerRecharge></value></Operation>
 
@@ -182,10 +182,7 @@
 <Operation Class="PatchOperationReplace"><xpath>*/TrainableDef[defName="Haul"]/minBodySize</xpath><value><minBodySize>0</minBodySize></value></Operation>
 <Operation Class="PatchOperationReplace"><xpath>*/TrainableDef[defName="Rescue"]/minBodySize</xpath><value><minBodySize>0</minBodySize></value></Operation>
 
-<!--Stack Modifications-->
-<Operation Class="PatchOperationRemove"><xpath>*/ThingDef[@Name="ChunkBase"]/passability</xpath></Operation>
-<Operation Class="PatchOperationRemove"><xpath>*/ThingDef[@Name="ChunkBase"]/saveCompressible</xpath></Operation>
-<Operation Class="PatchOperationReplace"><xpath>*/ThingDef[@Name="ChunkBase"]/stackLimit</xpath><value><drawGUIOverlay>true</drawGUIOverlay><stackLimit>100000</stackLimit></value></Operation>
+<!--Stack Modifications - Basic Items-->
 <Operation Class="PatchOperationReplace"><xpath>*/ThingDef[@Name="DrugBase"]/stackLimit</xpath><value><stackLimit>100000</stackLimit></value></Operation>
 <Operation Class="PatchOperationReplace"><xpath>*/ThingDef[@Name="MealBaseIngredientless"]/stackLimit</xpath><value><stackLimit>100000</stackLimit></value></Operation>
 <Operation Class="PatchOperationReplace"><xpath>*/ThingDef[@Name="MedicineBase"]/stackLimit</xpath><value><stackLimit>100000</stackLimit></value></Operation>
@@ -199,10 +196,25 @@
 <Operation Class="PatchOperationReplace"><xpath>*/ThingDef[defName="BroadshieldCore"]/drawGUIOverlay</xpath><value><drawGUIOverlay>true</drawGUIOverlay></value></Operation>
 <Operation Class="PatchOperationReplace"><xpath>*/ThingDef[defName="HemogenPack"]/stackLimit</xpath><value><stackLimit>100000</stackLimit></value></Operation>
 
+<!--Stack Modifications - Mechanoid Slags and Stone Chunks-->
+<Operation Class="PatchOperationAdd"><xpath>*/ThingDef[@Name="ChunkBase"]</xpath><value><drawGUIOverlay>true</drawGUIOverlay></value></Operation>
+<Operation Class="PatchOperationRemove"><xpath>*/ThingDef[@Name="ChunkBase"]/passability</xpath></Operation>
+<Operation Class="PatchOperationRemove"><xpath>*/ThingDef[@Name="ChunkBase"]/saveCompressible</xpath></Operation>
+<Operation Class="PatchOperationReplace"><xpath>*/ThingDef[@Name="ChunkBase"]/stackLimit</xpath><value><stackLimit>100000</stackLimit></value></Operation>
+
+<!--Stack Modifications - Modded Items-->
+<Operation Class="PatchOperationFindMod"><mods><li>Alpha Biomes</li></mods><match Class="PatchOperationAdd"><xpath>*/ThingDef[@Name="GU_ChunkBase"]</xpath><value><drawGUIOverlay>true</drawGUIOverlay></value></match></Operation>
+<Operation Class="PatchOperationFindMod"><mods><li>Alpha Biomes</li></mods><match Class="PatchOperationRemove"><xpath>*/ThingDef[@Name="GU_ChunkBase"]/passability</xpath></match></Operation>
+<Operation Class="PatchOperationFindMod"><mods><li>Alpha Biomes</li></mods><match Class="PatchOperationRemove"><xpath>*/ThingDef[@Name="GU_ChunkBase"]/saveCompressible</xpath></match></Operation>
+<Operation Class="PatchOperationFindMod"><mods><li>Alpha Biomes</li></mods><match Class="PatchOperationReplace"><xpath>*/ThingDef[@Name="GU_ChunkBase"]/stackLimit</xpath><value><stackLimit>100000</stackLimit></value></match></Operation>
+<Operation Class="PatchOperationFindMod"><mods><li>Mashed's Lynians</li></mods><match Class="PatchOperationReplace"><xpath>*/ThingDef[@Name="Mashed_Lynian_EurekacornBase"]/drawGUIOverlay</xpath><value><drawGUIOverlay>true</drawGUIOverlay></value></match></Operation>
+<Operation Class="PatchOperationFindMod"><mods><li>Mashed's Lynians</li></mods><match Class="PatchOperationReplace"><xpath>*/ThingDef[@Name="Mashed_Lynian_ShakalakaDanceBookBase"]/drawGUIOverlay</xpath><value><drawGUIOverlay>true</drawGUIOverlay></value></match></Operation>
+<Operation Class="PatchOperationFindMod"><mods><li>Mashed's Lynians</li></mods><match Class="PatchOperationReplace"><xpath>*/ThingDef[defName="Mashed_Lynian_LynianDyeKit"]/drawGUIOverlay</xpath><value><drawGUIOverlay>true</drawGUIOverlay></value></match></Operation>
+
 <!--Stony Chairs-->
 <Operation Class="PatchOperationAdd"><xpath>*/ThingDef[defName="DiningChair"]/stuffCategories</xpath><value><li>Stony</li></value></Operation>
 
-<!--The Shattered Empire - Have Every Permits-->
+<!--The Shattered Empire - Earn Every Permits-->
 <Operation Class="PatchOperationReplace"><xpath>*/RoyalTitleDef[defName="Acolyte"]/permitPointsAwarded</xpath><value><permitPointsAwarded>1</permitPointsAwarded></value></Operation>
 <Operation Class="PatchOperationReplace"><xpath>*/RoyalTitleDef[defName="Knight"]/permitPointsAwarded</xpath><value><permitPointsAwarded>2</permitPointsAwarded></value></Operation>
 <Operation Class="PatchOperationReplace"><xpath>*/RoyalTitleDef[defName="Praetor"]/permitPointsAwarded</xpath><value><permitPointsAwarded>2</permitPointsAwarded></value></Operation>
