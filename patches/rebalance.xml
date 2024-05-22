@@ -38,7 +38,7 @@
 <Operation Class="PatchOperationReplace"><xpath>*/ThingDef[ingestible/babiesCanIngest="true"]/statBases/FoodPoisonChanceFixedHuman</xpath><value><FoodPoisonChanceFixedHuman>0</FoodPoisonChanceFixedHuman></value></Operation>
 
 <!--Decreased Random Relations-->
-<Operation Class="PatchOperationReplace"><xpath>*/PawnRelationDef/generationChanceFactor</xpath><value><generationChanceFactor>0.01</generationChanceFactor></value></Operation>
+<Operation Class="PatchOperationReplace"><xpath>*/PawnRelationDef/generationChanceFactor</xpath><value><generationChanceFactor>0.0001</generationChanceFactor></value></Operation>
 
 <!--Decreased Thunderstorms-->
 <Operation Class="PatchOperationReplace"><xpath>*/WeatherDef[defName="DryThunderstorm"]/eventMakers/li[2]/averageInterval</xpath><value><averageInterval>40000</averageInterval></value></Operation>
@@ -109,12 +109,19 @@
 <!--Make Things Buildable-->
 <Operation Class="PatchOperationReplace"><xpath>*/ThingDef[defName="SanguphageMeetingTorch"]/designationCategory</xpath><value><designationCategory>Furniture</designationCategory></value></Operation>
 
+<!--Make Things Dismantlable-->
+
 <!--Make Things Moveable-->
 <Operation Class="PatchOperationAdd"><xpath>*/ThingDef[defName="AncientCryptosleepCasket"]/statBases</xpath><value><Mass>1</Mass></value></Operation>
-<Operation Class="PatchOperationAdd"><xpath>*/ThingDef[defName="AncientCryptosleepCasket"]</xpath><value><minifiedDef>MinifiedThing</minifiedDef><thingCategories><li>BuildingsMisc</li></thingCategories></value></Operation>
+<Operation Class="PatchOperationAdd"><xpath>*/ThingDef[defName="AncientCryptosleepCasket"]</xpath><value><minifiedDef>MinifiedThing</minifiedDef></value></Operation>
+<Operation Class="PatchOperationAdd"><xpath>*/ThingDef[defName="AncientCryptosleepCasket"]</xpath><value><thingCategories><li>BuildingsSpecial</li></thingCategories></value></Operation>
 <Operation Class="PatchOperationAdd"><xpath>*/ThingDef[defName="CryptosleepCasket"]/statBases</xpath><value><Mass>1</Mass></value></Operation>
-<Operation Class="PatchOperationAdd"><xpath>*/ThingDef[defName="CryptosleepCasket"]</xpath><value><minifiedDef>MinifiedThing</minifiedDef><thingCategories><li>BuildingsMisc</li></thingCategories></value></Operation>
-<Operation Class="PatchOperationAdd"><xpath>*/ThingDef[defName="SteamGeyser"]</xpath><value><minifiedDef>MinifiedThing</minifiedDef><statBases><Mass>1</Mass></statBases><thingCategories><li>BuildingsSpecial</li></thingCategories><tradeability>None</tradeability></value></Operation>
+<Operation Class="PatchOperationAdd"><xpath>*/ThingDef[defName="CryptosleepCasket"]</xpath><value><minifiedDef>MinifiedThing</minifiedDef></value></Operation>
+<Operation Class="PatchOperationAdd"><xpath>*/ThingDef[defName="CryptosleepCasket"]</xpath><value><thingCategories><li>BuildingsSpecial</li></thingCategories></value></Operation>
+<Operation Class="PatchOperationAdd"><xpath>*/ThingDef[defName="SteamGeyser"]</xpath><value><minifiedDef>MinifiedThing</minifiedDef></value></Operation>
+<Operation Class="PatchOperationAdd"><xpath>*/ThingDef[defName="SteamGeyser"]</xpath><value><statBases><Mass>1</Mass></statBases></value></Operation>
+<Operation Class="PatchOperationAdd"><xpath>*/ThingDef[defName="SteamGeyser"]</xpath><value><thingCategories><li>BuildingsSpecial</li></thingCategories></value></Operation>
+<Operation Class="PatchOperationAdd"><xpath>*/ThingDef[defName="SteamGeyser"]</xpath><value><tradeability>None</tradeability></value></Operation>
 
 <!--Minimal Radius for Anima Trees and Shrines-->
 <Operation Class="PatchOperationRemove"><xpath>*/ThingDef[defName="Plant_TreeGauranlen"]/drawPlaceWorkersWhileSelected</xpath></Operation>
@@ -162,6 +169,12 @@
 <!--Remove Starting Technologies-->
 <Operation Class="PatchOperationRemove"><xpath>*/FactionDef/startingResearchTags</xpath></Operation>
 <Operation Class="PatchOperationRemove"><xpath>*/FactionDef/startingTechprintsResearchTags</xpath></Operation>
+
+<!--Remove Techprints-->
+<Operation Class="PatchOperationRemove"><xpath>*/ResearchProjectDef/heldByFactionCategoryTags</xpath></Operation>
+<Operation Class="PatchOperationRemove"><xpath>*/ResearchProjectDef/techprintCommonality</xpath></Operation>
+<Operation Class="PatchOperationRemove"><xpath>*/ResearchProjectDef/techprintCount</xpath></Operation>
+<Operation Class="PatchOperationRemove"><xpath>*/ResearchProjectDef/techprintMarketValue</xpath></Operation>
 
 <!--Replantable Anima, Gauranlen, Harbinger and Polux Trees-->
 <Operation Class="PatchOperationRemove"><xpath>*/ThingDef[defName="Plant_TreeAnima"]/minifiedDef</xpath></Operation>
@@ -256,5 +269,11 @@
 <Operation Class="PatchOperationRemove"><xpath>*/ThingDef[@ParentName="TorchLamp"]/comps/li[@Class="CompProperties_Refuelable"]</xpath></Operation>
 <Operation Class="PatchOperationReplace"><xpath>*/ThingDef[@ParentName="LampBase"]/comps/li[@Class="CompProperties_Power"]/basePowerConsumption</xpath><value><basePowerConsumption>-1000</basePowerConsumption></value></Operation>
 <Operation Class="PatchOperationReplace"><xpath>*/ThingDef[defName="VanometricPowerCell"]/comps/li[@Class="CompProperties_Power"]/basePowerConsumption</xpath><value><basePowerConsumption>-10000</basePowerConsumption></value></Operation>
+
+<!--[TEST] Slavers Continue Visiting-->
+<Operation Class="PatchOperationRemove"><xpath>*/TraderKindDef/stockGenerators/li[@Class="StockGenerator_Slaves"]/respectPopulationIntent</xpath></Operation>
+<Operation Class="PatchOperationRemove"><xpath>*/TraderKindDef[category[text()="Slaver"]]/requestable</xpath></Operation>
+<Operation Class="PatchOperationReplace"><xpath>*/TraderKindDef/stockGenerators/li[@Class="StockGenerator_Slaves"][not(slaveKindDef)]/countRange</xpath><value><countRange>1~4</countRange></value></Operation>
+<Operation MayRequire="Ludeon.RimWorld.Royalty" Class="PatchOperationReplace"><xpath>*/TraderKindDef[defName="Base_Empire_Standard"]/stockGenerators/li[@Class="StockGenerator_Slaves"]/countRange</xpath><value><countRange>2~8</countRange></value></Operation>
 
 </Patch>
