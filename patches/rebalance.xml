@@ -37,6 +37,10 @@
 <!--Decreased Food Poisoning-->
 <Operation Class="PatchOperationReplace"><xpath>*/ThingDef[ingestible/babiesCanIngest="true"]/statBases/FoodPoisonChanceFixedHuman</xpath><value><FoodPoisonChanceFixedHuman>0</FoodPoisonChanceFixedHuman></value></Operation>
 
+<!--Decreased Look Change Desire-->
+<Operation Class="PatchOperationRemove"><xpath>*/ThinkTreeDef[defName="Humanlike"]/thinkRoot/subNodes/li[@Class="ThinkNode_ConditionalColonist"]/subNodes/li[@Class="ThinkNode_ConditionalWantsLookChange"]</xpath></Operation>
+<Operation Class="PatchOperationRemove"><xpath>*/ThoughtDef[defName="LookChangeDesired"]</xpath></Operation>
+
 <!--Decreased Random Relations-->
 <Operation Class="PatchOperationReplace"><xpath>*/PawnRelationDef/generationChanceFactor</xpath><value><generationChanceFactor>0.0001</generationChanceFactor></value></Operation>
 
@@ -86,10 +90,6 @@
 <Operation Class="PatchOperationAdd"><xpath>*/RecipeDef[@Name="ButcherCorpseMechanoidBase"]</xpath><value><workSkillLearnFactor>1</workSkillLearnFactor></value></Operation>
 <Operation Class="PatchOperationAdd"><xpath>*/RecipeDef[defName="ButcherCorpseFlesh"]</xpath><value><workSkillLearnFactor>1</workSkillLearnFactor></value></Operation>
 <Operation Class="PatchOperationReplace"><xpath>*/RecipeDef[@Name="MakeStoneBlocksBase"]/workSkillLearnFactor</xpath><value><workSkillLearnFactor>1</workSkillLearnFactor></value></Operation>
-
-<!--Less Look Change Desire-->
-<Operation Class="PatchOperationRemove"><xpath>*/ThinkTreeDef[defName="Humanlike"]/thinkRoot/subNodes/li[@Class="ThinkNode_ConditionalColonist"]/subNodes/li[@Class="ThinkNode_ConditionalWantsLookChange"]</xpath></Operation>
-<Operation Class="PatchOperationRemove"><xpath>*/ThoughtDef[defName="LookChangeDesired"]</xpath></Operation>
 
 <!--Lootable Mechanoid Weaponry-->
 <Operation Class="PatchOperationAdd"><xpath>*/ThingDef[@Name="Gun_ChargeBlasterHeavyBase"]</xpath><value><costList><ComponentSpacer>1</ComponentSpacer></costList></value></Operation>
@@ -154,6 +154,7 @@
 <!--Remove Disabled Works-->
 <Operation Class="PatchOperationFindMod"><mods><li>Humanoid Alien Races</li></mods><match Class="PatchOperationRemove"><xpath>*/AlienRace.AlienBackstoryDef/workDisables</xpath></match></Operation>
 <Operation Class="PatchOperationRemove"><xpath>*/BackstoryDef/workDisables</xpath></Operation>
+<Operation Class="PatchOperationRemove"><xpath>*/PreceptDef/roleDisabledWorkTags</xpath></Operation>
 
 <!--Remove Doors Sound-->
 <Operation Class="PatchOperationReplace"><xpath>*/SoundDef[defName="Door_CloseManual"]/subSounds/li[*]/volumeRange</xpath><value><volumeRange>0</volumeRange></value></Operation>
@@ -231,6 +232,7 @@
 
 <!--Stony Chairs-->
 <Operation Class="PatchOperationAdd"><xpath>*/ThingDef[defName="DiningChair"]/stuffCategories</xpath><value><li>Stony</li></value></Operation>
+<Operation Class="PatchOperationFindMod"><mods><li>Vanilla Furniture Expanded</li></mods><match Class="PatchOperationAdd"><xpath>*/ThingDef[defName="Seat_SquareChair"]/stuffCategories</xpath><value><li>Stony</li></value></match></Operation>
 
 <!--The Shattered Empire - Earn Every Permits-->
 <Operation Class="PatchOperationReplace"><xpath>*/RoyalTitleDef[defName="Acolyte"]/permitPointsAwarded</xpath><value><permitPointsAwarded>1</permitPointsAwarded></value></Operation>
@@ -274,11 +276,5 @@
 <Operation Class="PatchOperationRemove"><xpath>*/ThingDef[@ParentName="TorchLamp"]/comps/li[@Class="CompProperties_Refuelable"]</xpath></Operation>
 <Operation Class="PatchOperationReplace"><xpath>*/ThingDef[@ParentName="LampBase"]/comps/li[@Class="CompProperties_Power"]/basePowerConsumption</xpath><value><basePowerConsumption>-1000</basePowerConsumption></value></Operation>
 <Operation Class="PatchOperationReplace"><xpath>*/ThingDef[defName="VanometricPowerCell"]/comps/li[@Class="CompProperties_Power"]/basePowerConsumption</xpath><value><basePowerConsumption>-10000</basePowerConsumption></value></Operation>
-
-<!--[TEST] Slavers Continue Visiting-->
-<Operation Class="PatchOperationRemove"><xpath>*/TraderKindDef/stockGenerators/li[@Class="StockGenerator_Slaves"]/respectPopulationIntent</xpath></Operation>
-<Operation Class="PatchOperationRemove"><xpath>*/TraderKindDef[category[text()="Slaver"]]/requestable</xpath></Operation>
-<Operation Class="PatchOperationReplace"><xpath>*/TraderKindDef/stockGenerators/li[@Class="StockGenerator_Slaves"][not(slaveKindDef)]/countRange</xpath><value><countRange>1~4</countRange></value></Operation>
-<Operation MayRequire="Ludeon.RimWorld.Royalty" Class="PatchOperationReplace"><xpath>*/TraderKindDef[defName="Base_Empire_Standard"]/stockGenerators/li[@Class="StockGenerator_Slaves"]/countRange</xpath><value><countRange>2~8</countRange></value></Operation>
 
 </Patch>
