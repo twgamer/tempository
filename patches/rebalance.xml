@@ -14,6 +14,7 @@
 <Operation Class="PatchOperationRemove"><xpath>*/PreceptDef[defName="Ranching_Central"]/statFactors/PlantWorkSpeed</xpath></Operation>
 
 <!--Begone Oversized Eyes-->
+<Operation Class="PatchOperationFindMod"><mods><li>Nephilim Xenotype</li></mods><match Class="PatchOperationRemove"><xpath>*/GeneDef[defName="GS_Eyes_Yellowy"]/renderNodeProperties/li[@Class="PawnRenderNodeProperties_Eye"]/texPathFemale</xpath></match></Operation>
 <Operation Class="PatchOperationRemove"><xpath>*/GeneDef[defName="Eyes_Gray"]/renderNodeProperties/li[@Class="PawnRenderNodeProperties_Eye"]/texPathFemale</xpath></Operation>
 <Operation Class="PatchOperationRemove"><xpath>*/GeneDef[defName="Eyes_Red"]/renderNodeProperties/li[@Class="PawnRenderNodeProperties_Eye"]/texPathFemale</xpath></Operation>
 <Operation Class="PatchOperationRemove"><xpath>*/HediffDef[defName="VoidTouched"]/renderNodeProperties/li[@Class="PawnRenderNodeProperties_Eye"]/texPathFemale</xpath></Operation>
