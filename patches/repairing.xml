@@ -5,4 +5,9 @@
 <!-- XML XPATH SYNTAXES @ https://www.w3schools.com/xml/xpath_syntax.asp -->
 
 <Patch>
+
+<Operation Class="PatchOperationFindMod"><mods><li>Mooloh's Dnd Menagerie</li></mods><match Class="PatchOperationAdd"><xpath>*/ThingDef[defName="DND_BasiliskRay"]/dgi/immunityHediffDefs</xpath><value><li>Bloodspawn</li></value></match></Operation>
+<Operation Class="PatchOperationFindMod"><mods><li>Mooloh's Dnd Menagerie</li></mods><match Class="PatchOperationAdd"><xpath>*/ThingDef[defName="DND_GibberingMouther"]/comps/li[@Class="MoodndBehaviorsAndEvents.CompProperties_AreaHediffDebuffApplier"]/dgi/immunityHediffDefs</xpath><value><li>Bloodspawn</li></value></match></Operation>
+<Operation Class="PatchOperationFindMod"><mods><li>Mooloh's Dnd Menagerie</li></mods><match Class="PatchOperationAdd"><xpath>*/ThingDef[defName="DND_MedusaRay"]/dgi/immunityHediffDefs</xpath><value><li>Bloodspawn</li></value></match></Operation>
+
 </Patch>
