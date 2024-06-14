@@ -21,6 +21,9 @@
 <Operation Class="PatchOperationRemove"><xpath>*/HediffDef[defName="VoidTouched"]/renderNodeProperties/li[@Class="PawnRenderNodeProperties_Eye"]/texPathFemale</xpath></Operation>
 <Operation Class="PatchOperationRemove"><xpath>*/TraitDef[defName="BodyMastery"]/degreeDatas/li/renderNodeProperties/li[@Class="PawnRenderNodeProperties_Eye"]/texPathFemale</xpath></Operation>
 
+<!--Begone Skill Modifiers-->
+<Operation Class="PatchOperationRemove"><xpath>*/XenotypeDef/genes/li[contains(text(),"Aptitude")]</xpath></Operation>
+
 <!--Bigger Rivers-->
 <Operation Class="PatchOperationReplace"><xpath>*/RiverDef[defName="Creek"]/widthOnMap</xpath><value><widthOnMap>400</widthOnMap></value></Operation>
 <Operation Class="PatchOperationReplace"><xpath>*/RiverDef[defName="HugeRiver"]/widthOnMap</xpath><value><widthOnMap>400</widthOnMap></value></Operation>
@@ -84,6 +87,12 @@
 
 <!--Herd Migration on Every Biomes-->
 <Operation Class="PatchOperationRemove"><xpath>*/IncidentDef[defName="HerdMigration"]/allowedBiomes</xpath></Operation>
+
+<!--Increased Tank and Vat Storages-->
+<Operation Class="PatchOperationFindMod"><mods><li>Vanilla Nutrient Paste Expanded</li></mods><match Class="PatchOperationReplace"><xpath>*/ThingDef[defName="VNPE_NutrientPasteVat"]/comps/li[@Class="PipeSystem.CompProperties_ResourceStorage"]/storageCapacity</xpath><value><storageCapacity>10000</storageCapacity></value></match></Operation>
+<Operation Class="PatchOperationFindMod"><mods><li>Vanilla Nutrient Paste Expanded</li></mods><match Class="PatchOperationReplace"><xpath>*/ThingDef[defName="VNPE_NutrientPasteVat"]/description</xpath><value><description>A large tank that can store nutrient paste meals in it. Makes a big mess when destroyed.</description></value></match></Operation>
+<Operation Class="PatchOperationFindMod"><mods><li>Vanilla Races Expanded - Android</li></mods><match Class="PatchOperationReplace"><xpath>*/ThingDef[defName="VREA_NeutroTank"]/comps/li[@Class="PipeSystem.CompProperties_ResourceStorage"]/storageCapacity</xpath><value><storageCapacity>10000</storageCapacity></value></match></Operation>
+<Operation Class="PatchOperationFindMod"><mods><li>Vanilla Races Expanded - Sanguophage</li></mods><match Class="PatchOperationReplace"><xpath>*/ThingDef[defName="VRE_HemogenVat"]/comps/li[@Class="PipeSystem.CompProperties_ResourceStorage"]/storageCapacity</xpath><value><storageCapacity>10000</storageCapacity></value></match></Operation>
 
 <!--Invincible Mechanoid Chips-->
 <Operation Class="PatchOperationAdd"><xpath>*/ThingDef[@Name="MechResourceBase"]</xpath><value><useHitPoints>false</useHitPoints></value></Operation>
